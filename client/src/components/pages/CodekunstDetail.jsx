@@ -6,50 +6,48 @@ import CardDetail from "../CardDetail";
 export default class CodekunstDetail extends Component {
   constructor(props) {
     super(props);
-    this._isMounted = false;
+    window.addEventListener("keydown", this.handleKeyboardInput.bind(this));
     this.state = {
       name: "",
       code: "",
       thumbnail: "",
       userarts: [],
-      codekunst: null
+      description: "",
+      codekunst: null,
+      saving: false
     };
   }
 
   handleKeyboardInput = e => {
     const code = e.keyCode ? e.keyCode : e.which;
 
-    if (code === 83) {
+    if (api.isLoggedIn() && code === 83) {
       //s key
-      console.log("S clicked on react, timeout and setstate!");
-      console.log(
-        "S clicked, before Timeout-SetState-Update length in state is " +
-          this.state.userarts.length
-      );
       console.log(
         "Please wait, your art is going to be saved and will appear shortly"
       );
 
-      this._isMounted &&
-        setTimeout(() => {
-          console.log("Timeout called!");
-          api
-            .getCodekunstDetail(this.props.match.params.codekunstId)
-            .then(codekunst => {
-              this.setState({
-                codekunst: codekunst,
-                name: codekunst.name,
-                code: codekunst.code,
-                thumbnail: codekunst.thumbnail,
-                userarts: codekunst.userarts
-              });
-              console.log(
-                "S clicked, AFTER Timeout-SetState-Update length in state is " +
-                  this.state.userarts.length
-              );
-            })
-            .catch(err => console.log(err));
-        }, 3000);
+      this.setState({
+        saving: true
+      });
+
+      setTimeout(() => {
+        console.log("Timeout called!");
+        api
+          .getCodekunstDetail(this.props.match.params.codekunstId)
+          .then(codekunst => {
+            this.setState({
+              codekunst: codekunst,
+              name: codekunst.name,
+              code: codekunst.code,
+              thumbnail: codekunst.thumbnail,
+              userarts: codekunst.userarts,
+              description: codekunst.description,
+              saving: false
+            });
+          })
+          .catch(err => console.log(err));
+      }, 3000);
     }
   };
 
@@ -65,6 +63,7 @@ export default class CodekunstDetail extends Component {
       <div>
         <div>
           <h3>
+            {/* TODO:Spinner und if else isloggedIn */}
             <strong>Projectcode</strong>: {this.state.codekunst.projectcode}
           </h3>
           <div className="d-flex flex-row flex-wrap">
@@ -85,33 +84,14 @@ export default class CodekunstDetail extends Component {
     );
   }
 
-  componentWillMount() {
-    window.addEventListener("keydown", this.handleKeyboardInput.bind(this));
-    console.log("***** Component will mount *****");
-    console.log("Eventlistener added!");
-    console.log(
-      "Before API-call: OLD this.state.userarts: " + this.state.userarts.length
-    );
-    // this._isMounted &&
-    api
-      .getCodekunstDetail(this.props.match.params.codekunstId)
-      .then(codekunst => {
-        this.setState({
-          codekunst: codekunst,
-          name: codekunst.name,
-          code: codekunst.code,
-          thumbnail: codekunst.thumbnail,
-          userarts: codekunst.userarts
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
   componentDidMount() {
     console.log("***** Component did mount *****");
-    console.log("Execute code with eval");
-    this._isMounted = true;
-    // this._isMounted &&
+
+    if (!window.location.hash) {
+      window.location = window.location + "#loaded";
+      window.location.reload();
+    }
+
     api
       .getCodekunstDetail(this.props.match.params.codekunstId)
       .then(codekunst => {
@@ -120,33 +100,21 @@ export default class CodekunstDetail extends Component {
           name: codekunst.name,
           code: codekunst.code,
           thumbnail: codekunst.thumbnail,
-          userarts: codekunst.userarts
+          userarts: codekunst.userarts,
+          description: codekunst.description
         });
+        // DISCLAIMER: We know that 'eval' can be dangerous, but after a bunch of days trying to avoid it,
+        // we figured out, that this seems to be the only way to execute p5 based code inside
+        // a react app with full functionality. Also, the user is not able to input own code,
+        // just admins. In real production, we would even not implement this option for admins,
+        // because the admin page could potentioally be hacked. In this case we did implement it
+        // to add and test new p5 code quickly, without seeding the database.
         let executeArtsyCode = function(projectcode) {
           // eslint-disable-next-line
           eval(codekunst.code);
         };
         executeArtsyCode(codekunst.projectcode);
-        // eval(codekunst.code);
-        // console.log("TEST MAXENCE", document.querySelector("canvas"));
       })
       .catch(err => console.log(err));
-  }
-
-  componentWillUpdate() {
-    console.log("***** Component will update *****");
-  }
-
-  componentDidUpdate() {
-    console.log("***** Component did update *****");
-    console.log(
-      "Did update called. Userarts length when -componentDidUpdate: " +
-        this.state.userarts.length
-    );
-  }
-
-  componentWillUnmount() {
-    console.log("***** Component will unmount *****");
-    this._isMounted = false;
   }
 }

@@ -14,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    api.refreshIfNotAnymoreLoggedIn();
   }
 
   handleLogoutClick(e) {
@@ -43,7 +44,7 @@ class App extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/admin" component={Admin} />
-          <Route render={() => <page404 />} />
+          {/* <Route component={ErrorPage404} />------- TODO */}
         </Switch>
       </div>
     );

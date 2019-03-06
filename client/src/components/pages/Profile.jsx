@@ -16,7 +16,7 @@ export default class Profile extends Component {
   render() {
     console.log("user params", this.state.userId);
     let username;
-    if (localStorage.getItem("user")) {
+    if (api.isLoggedIn()) {
       username = JSON.parse(localStorage.getItem("user")).username;
     }
 
