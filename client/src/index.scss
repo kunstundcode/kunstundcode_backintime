@@ -1,0 +1,486 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// --------------------
+// Definition of variables
+$primary: #32c3ff;
+
+// ----------------------------------------
+// To install Boostrap:
+// 1) Run in the client folder: $ npm i bootstrap
+// 2) Import bootstrap with the following line
+// @import 'bootstrap/scss/bootstrap';
+// ----------------------------------------
+
+// --------------------
+// Style reusable for all components
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #e9e5f5;
+  background-image: url("./noise.png");
+  background-repeat: repeat;
+}
+
+// .thumbnail {
+//   width: 100px;
+// }
+
+// .info {
+//   margin: 20px;
+//   padding: 10px 20px;
+//   border-radius: 10px;
+//   display: inline-block;
+//   background-color: #5776e9;
+//   color: white;
+// }
+
+// .info.info-danger {
+//   background-color: #e73f3f;
+// }
+
+// // --------------------
+// // Style for App component
+// .App {
+//   text-align: center;
+
+//   .App-logo {
+//     animation: App-logo-spin infinite 20s linear;
+//     height: 80px;
+//   }
+
+//   .App-header {
+//     background-color: $primary;
+//     padding: 20px;
+//     color: white;
+
+//     a {
+//       color: white;
+//       padding: 0 5px;
+//       text-decoration: unset;
+//     }
+
+//     a.active {
+//       font-weight: bold;
+//     }
+//   }
+
+//   .App-title {
+//     font-size: 1.5em;
+//   }
+
+//   .App-intro {
+//     font-size: large;
+//   }
+
+//   @keyframes App-logo-spin {
+//     from {
+//       transform: rotate(0deg);
+//     }
+
+//     to {
+//       transform: rotate(360deg);
+//     }
+//   }
+// }
+
+// --------------------
+// Style for Home component
+// .Home {
+//   p {
+//     font-size: 1.2em;
+//   }
+// }
+
+// --------------------
+// Style for Secret component
+// .Secret {
+//   .result {
+//     font-size: 1.2em;
+//     color: $primary;
+//   }
+// }
+
+// --------------------
+// Style for Codekunt component-------------------------
+// .step1 .step2 .step3 {
+//   border: 1px solid blue;
+// }
+
+//========================================== NAVBAR =======================================
+
+//------ Definition of variables for navbar
+$navColor: black;
+$navitemsColor: white;
+$navitemsActive: #0049ff;
+$dropdownitemBg: #fff200;
+$dropdownitemColor: black;
+
+$brandColor: greenyellow;
+
+//---------Navbar--------
+.navbar {
+  background-color: $navColor;
+  padding: 0;
+}
+// .collapse.navbar-collapse {
+//   margin: 0;
+//   transition: all 3s ease;
+// }
+
+//BRAND links in der navbar
+.navbar-brand {
+  background-color: #0049ff;
+  color: $brandColor;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-right: 3em;
+}
+
+//brand hover voreinstellung muss hier aufgehoben werden
+.navbar-brand:hover {
+  color: $brandColor;
+}
+
+//kleines TOGGLEkästchen das bei Collapse erscheint und die Nav-items enthält
+.navbar-toggler {
+  border: 1px solid aqua;
+}
+
+//Icon im Togglekästchen
+.navbar-toggler-icon {
+  background-color: red;
+}
+
+//linker Abstand der dropdownHeadlines in einem collapsed menu
+.navbar-nav {
+  .nav-link {
+    padding-left: 1.5em;
+  }
+}
+
+//ist das li item in ul(navbar-nav). li enthält a und dropdown-menu
+.nav-item {
+  color: $navitemsColor;
+  margin: 0;
+}
+
+//li hover
+// .nav-item:hover {
+//   background-color: $navitemsActive;
+// }
+
+//das a-element in li
+.nav-link {
+  color: $navitemsColor;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+//a-element hover(muss sein sonst greift vordefinierter hover)
+.nav-link:hover {
+  color: $navitemsColor;
+}
+
+// -----------------test das drobdown smoother zu machen-----
+// .dropdown .dropdown-menu {
+//   opacity: 0;
+//   -webkit-transition: all 200ms ease-in;
+//   -moz-transition: all 200ms ease-in;
+//   -ms-transition: all 200ms ease-in;
+//   -o-transition: all 200ms ease-in;
+//   transition: all 200ms ease-in;
+// }
+// .dropdown:hover .dropdown-menu {
+//   opacity: 1;
+// }
+//   background-color: yellow;
+// }
+// .dropdown.show {
+//   background-color: pink;
+//   padding: 0;
+//   margin: 0;
+// }
+
+//li item während das dropdownmenu aktiviert wurde
+.nav-item.show {
+  background-color: $navitemsActive;
+}
+
+//div das alle buttons(dropdown-items)enthält
+.dropdown-menu {
+  // border: 1px solid red;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+//button im dropdownmenu(sieht aus wie listenpunkt)
+.dropdown-item {
+  background-color: $dropdownitemBg;
+  padding-right: 13em; //abstand des buttons zum dropdown-menu -bestimmt die breite des dropdownmenus
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+//button hover
+.dropdown-item:hover {
+  background-color: $navitemsActive;
+  color: $navitemsColor;
+}
+
+//====================================== GRID ===================================
+.wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  background-color: none;
+  // border: 2px solid red;
+}
+
+.row {
+  padding: 0 30px;
+}
+//====================================== CARD ===================================
+// $cardPrime: #0049ff;
+$cardPrime: white;
+
+.card {
+  border: 0.5em solid $cardPrime;
+  background-color: transparent;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+  transition: box-shadow 500ms;
+  border-radius: 0%;
+  padding: 5rem 3rem 2rem 3rem;
+  margin: 2rem 0 4rem 0;
+}
+
+/*----Blueprint texture-------------------
+background-color:#269;
+background-image: linear-gradient(white 2px, transparent 2px),
+linear-gradient(90deg, white 2px, transparent 2px),
+linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+*/
+
+/*----Gitter texture----------------------
+background: linear-gradient(transparent 60%, 50%, black),
+    linear-gradient(90deg, transparent 60%, black 50%, black);
+  background-size: 6px 6px;
+*/
+
+/*----Stripe texture----------------------
+background: linear-gradient(transparent 60%, 50%, black),
+    linear-gradient(90deg, transparent 60%, black 50%, black);
+  background-size: 1px 6px;
+*/
+
+.card:hover {
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+  // box-shadow: 20px 20px black;
+  // z-index: 99;
+}
+
+// box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+// box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.6);
+
+.card-body {
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.card-img-top {
+  border: 0.2em solid $cardPrime;
+  border-radius: 0%;
+  // object-fit: cover;
+}
+
+.linkContainer > a {
+  text-decoration: unset;
+  color: $cardPrime;
+}
+
+.xBox {
+  font-size: 2.8rem;
+  color: $cardPrime;
+  margin: 0;
+  padding: 0;
+  top: -0.9rem;
+  right: 0.5rem;
+  position: absolute;
+}
+//div in dem xBox drin ist
+.card-header {
+  border: none;
+  background-color: transparent;
+}
+
+// ============================= SIDEBAR CONTAINER===========================
+
+.sidebarContainer {
+  position: fixed;
+  right: 0;
+  top: 50vh;
+  z-index: 999;
+  box-sizing: border-box;
+  // border: "2px solid green"
+}
+
+//================== SIDEBAR BUTTON=======================
+$main-color: black;
+$secondary-color: #ff00ed;
+
+.sidebarButton {
+  // margin: 10px;
+  box-sizing: border-box;
+
+  margin-right: -40px;
+  // border: 5px solid #0065a6;
+  transform: rotate(90deg);
+  transition: all 0.7s ease;
+  //transition: all 0.7s cubic-bezier(0, 1.26, 0.8, 1.28)
+
+  // font: 300 22px/1.5 "Helvetica Neue", sans-serif;
+  color: $main-color;
+  text-decoration: none;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    to right,
+    $secondary-color,
+    $secondary-color 50%,
+    $main-color 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100%;
+}
+
+.sidebarButton:hover {
+  background-color: #96d9ff;
+  cursor: pointer;
+  // border-color: #003557;
+  // transform: scale(1.2, 1.2) rotate(-90deg);
+
+  color: $secondary-color;
+  transition: all 0.7s ease;
+  //transition: all 0.7s cubic-bezier(0, 0, 0.23, 1);
+  background-position: 0%;
+}
+
+.sidebarButton:active {
+  // border-color: #003557;
+  // background-color: #fff;
+}
+
+//================================SIDEBAR====================
+.projectSidebar {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffe600;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: transform 0.6s cubic-bezier(0.6, 0.32, 0.4, 1);
+  //transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
+  overflow: scroll;
+  z-index: 1000;
+}
+
+.projectSidebar.hide {
+  transform: translate3d(100vw, 0, 0);
+}
+
+.projectSidebar.show {
+  transform: translate3d(50vw, 0, 0);
+  overflow: hidden;
+}
+
+.projectSidebar h2 a {
+  color: #333;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.projectSidebar h2 a:hover {
+  text-decoration: underline;
+}
+
+// #0004ff blau
+// #fff200 gelb
+// #ff00ed pink
+
+// ============================= PROFILE CONTAINER===========================
+
+.profileContainer {
+  border: 1px solid red;
+  background-color: blue;
+}
+
+.cardProfile {
+  border: 0.6em solid white;
+  background-clip: content-box;
+  background-color: transparent;
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+  transition: box-shadow 500ms;
+  border-radius: 0%;
+  padding: 5rem 3rem 2rem 3rem;
+  margin: 2rem 0 4rem 0;
+}
+
+.cardProfile:hover {
+  // box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 20px 20px black;
+  // z-index: 99;
+}
+
+// box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+// box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.6);
+
+.card-body {
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.card-img {
+  border-radius: 0;
+}
+.card-img-top {
+  border: 0.2em solid $cardPrime;
+  border-radius: 0%;
+  // object-fit: cover;
+}
+
+.linkContainer > a {
+  text-decoration: unset;
+  color: $cardPrime;
+}
+
+.xBox {
+  font-size: 2.8rem;
+  color: $cardPrime;
+  margin: 0;
+  padding: 0;
+  top: -0.9rem;
+  right: 0.5rem;
+  position: absolute;
+}
+//div in dem xBox drin ist
+.card-header {
+  border: none;
+  background-color: transparent;
+}
+
+//====================================== ADMIN PAGE ===================================
+.form-control {
+  background-color: transparent;
+  border: 1px solid black;
+}
+.form-control:active {
+  background-color: pink;
+  border: 1px solid black;
+  transition: box-shadow yellow;
+}
