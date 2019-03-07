@@ -475,12 +475,31 @@ $secondary-color: #ff00ed;
 }
 
 //====================================== ADMIN PAGE ===================================
+$primaryAdminBg: #0004ff;
+$primaryAdminFont: white;
+
 .form-control {
   background-color: transparent;
   border: 1px solid black;
 }
-.form-control:active {
-  background-color: pink;
+.form-control:focus {
+  background-color: $primaryAdminBg;
+  color: $primaryAdminFont;
+  border: 1px solid white !important;
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+}
+
+//====================================== LOGIN PAGE ===================================
+$primaryLoginBg: #0004ff;
+$primaryLoginFont: white;
+
+.form-control {
+  background-color: transparent;
   border: 1px solid black;
-  transition: box-shadow yellow;
+}
+.form-control:focus {
+  background-color: $primaryLoginBg;
+  color: $primaryLoginFont;
+  border: 1px solid white !important;
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
 }

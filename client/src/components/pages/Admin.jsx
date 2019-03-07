@@ -91,7 +91,7 @@ class Secret extends Component {
               onChange={this.handleInputChange}
             />
             <FormText color="muted">
-              Lets try out a 100000 times if this shity P5code is working in a
+              Lets try out a 100000 times if this shitty P5code is working in a
               react environment
             </FormText>
           </FormGroup>
