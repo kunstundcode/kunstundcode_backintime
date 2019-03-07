@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../api";
+
 import {
   Container,
   Form,
@@ -7,10 +8,11 @@ import {
   Label,
   Input,
   FormText,
-  Button
+  Button,
+  Card
 } from "reactstrap";
 
-class Login extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +21,9 @@ class Login extends Component {
       message: null
     };
   }
+  handleSubmit = event => {
+    event.preventDefault();
+  };
 
   handleInputChange(stateFieldName, event) {
     this.setState({
@@ -39,35 +44,80 @@ class Login extends Component {
 
   render() {
     return (
-      <Container>
-        <h2>Login and play around!</h2>
-        <Form className="Login">
-          <FormGroup>
-            <Label for="username">Artist</Label>
-            <Input
-              type="text"
-              value={this.state.username}
-              onChange={e => this.handleInputChange("username", e)}
-            />
+      <Container className="signupLoginContainer">
+        <Card className="cardlogin">
+          <h2>Login and play around!</h2>
+          <Form className="login" onSubmit={e => this.handleClick(e)}>
             <FormGroup>
+              <Label for="username">Artist</Label>
+              <Input
+                type="text"
+                value={this.state.username}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
+                onChange={e => this.handleInputChange("username", e)}
+              />
+
               <Label for="password">Password</Label>
               <Input
                 type="password"
                 value={this.state.password}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
                 onChange={e => this.handleInputChange("password", e)}
               />
-            </FormGroup>
 
-            <Button onSubmit={e => this.handleClick(e)}>Login</Button>
-          </FormGroup>
-          {this.state.message && (
-            <div className="info info-danger">{this.state.message}</div>
-          )}
-        </Form>
+              <Button
+                className={`loginBtn ${
+                  this.state.changeButton ? "btn-change" : "btn-secondary"
+                }`}
+              >
+                Login
+              </Button>
+            </FormGroup>
+            {this.state.message && (
+              <div className="info info-danger">{this.state.message}</div>
+            )}
+          </Form>
+        </Card>
       </Container>
     );
   }
 }
+
+/*
+<Col md={6} lg={4}>
+      <Card className="card">
+        <CardHeader className="card-header xBox">⊠</CardHeader>
+        <CardImg
+          class="card-img-top img-fluid"
+          src={props.c.thumbnail}
+          alt="codekunstpicture"
+        />
+        <CardBody class="card-body">
+          <CardText className="text-nowrap linkContainer">
+            <Link to={"/codekuenste/" + props.c._id}>▬▬▬▬▬▬ Detail ▬▬▬▬▬⪢</Link>
+          </CardText>
+        </CardBody>
+      </Card>
+    </Col>
+*/
 
 /*
 <Container>
@@ -111,5 +161,3 @@ class Login extends Component {
         </Form>
       </Container>
 */
-
-export default Login;

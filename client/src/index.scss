@@ -16,7 +16,8 @@ $primary: #32c3ff;
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Roboto Mono", monospace;
+
   background-color: #e9e5f5;
   background-image: url("./noise.png");
   background-repeat: repeat;
@@ -247,12 +248,26 @@ $brandColor: greenyellow;
 // $cardPrime: #0049ff;
 $cardPrime: white;
 
+/*ALternative CArd
+.card {
+  border: 0.5em solid $cardPrime;
+  background-color: transparent;
+  box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0.6);
+  transition: box-shadow 500ms;
+  border-radius: 0%;
+  padding: 5rem 3rem 2rem 3rem;
+  margin: 2rem 0 4rem 0;
+  border-style: outset;
+}
+*/
+
 .card {
   border: 0.5em solid $cardPrime;
   background-color: transparent;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
   transition: box-shadow 500ms;
   border-radius: 0%;
+  border-style: outset; //ALTERNATIVE
   padding: 5rem 3rem 2rem 3rem;
   margin: 2rem 0 4rem 0;
 }
@@ -280,6 +295,7 @@ background: linear-gradient(transparent 60%, 50%, black),
 */
 
 .card:hover {
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6); ALTERNATIVE
   box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
   // box-shadow: 20px 20px black;
   // z-index: 99;
@@ -479,6 +495,7 @@ $primaryAdminBg: #0004ff;
 $primaryAdminFont: white;
 
 .form-control {
+  font-size: 1em;
   background-color: transparent;
   border: 1px solid black;
 }
@@ -493,13 +510,76 @@ $primaryAdminFont: white;
 $primaryLoginBg: #0004ff;
 $primaryLoginFont: white;
 
+.signupLoginContainer {
+  // align-self: center;
+  margin-top: 6em;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-end;
+  align-items: center;
+}
+label {
+  align-self: flex-start;
+}
+.login {
+  max-width: 30em;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+}
 .form-control {
   background-color: transparent;
   border: 1px solid black;
+  margin-bottom: 2em;
 }
 .form-control:focus {
   background-color: $primaryLoginBg;
   color: $primaryLoginFont;
   border: 1px solid white !important;
   box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+}
+
+.cardlogin > h2 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+}
+
+.cardlogin {
+  box-shadow: none;
+  border: none;
+  // padding: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardlogin:hover {
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6); ALTERNATIVE
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+  // box-shadow: 20px 20px black;
+  // z-index: 99;
+}
+
+.loginBtn {
+  background-color: transparent !important;
+  border: 1px solid black !important;
+  color: black !important;
+  transition: 300ms;
+}
+.loginBtn:hover {
+  box-shadow: none;
+}
+// .btn-secondary {
+//   background-color: transparent !important;
+//   border: 1px solid black !important;
+//   color: black !important;
+// }
+
+.btn-change {
+  background-color: black !important;
+  border: 1px solid white !important;
+  color: white !important;
 }

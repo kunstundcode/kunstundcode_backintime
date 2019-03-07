@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 import api from "../../api";
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+  Card
+} from "reactstrap";
 
 class Signup extends Component {
   constructor(props) {
@@ -36,31 +46,115 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="Signup">
-        <h2>Signup</h2>
-        <form>
-          Username:{" "}
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={e => this.handleInputChange("username", e)}
-          />{" "}
-          <br />
-          Password:{" "}
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={e => this.handleInputChange("password", e)}
-          />{" "}
-          <br />
-          <button onClick={e => this.handleClick(e)}>Signup</button>
-        </form>
-        {this.state.message && (
-          <div className="info info-danger">{this.state.message}</div>
-        )}
-      </div>
+      <Container className="signupLoginContainer">
+        <Card className="cardlogin">
+          <h2>Signup</h2>
+          <Form className="login" onSubmit={e => this.handleClick(e)}>
+            <FormGroup>
+              <Label for="username">Username</Label>
+              <Input
+                type="text"
+                value={this.state.username}
+                onChange={e => this.handleInputChange("username", e)}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
+              />
+              <Label>Password</Label>
+              <Input
+                type="password"
+                value={this.state.password}
+                onChange={e => this.handleInputChange("password", e)}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
+              />
+              <Button
+                className={`loginBtn ${
+                  this.state.changeButton ? "btn-change" : "btn-secondary"
+                }`}
+              >
+                Signup
+              </Button>
+              {this.state.message && (
+                <div className="info info-danger">{this.state.message}</div>
+              )}
+            </FormGroup>
+          </Form>
+        </Card>
+      </Container>
     );
   }
 }
+
+/*
+  <Card className="cardlogin">
+          <h2>Login and play around!</h2>
+          <Form className="Login">
+            <FormGroup>
+              <Label for="username">Artist</Label>
+              <Input
+                type="text"
+                value={this.state.username}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
+                onChange={e => this.handleInputChange("username", e)}
+              />
+
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                value={this.state.password}
+                onFocus={() => {
+                  this.setState({
+                    changeButton: true
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    changeButton: false
+                  });
+                }}
+                onChange={e => this.handleInputChange("password", e)}
+              />
+
+              <Button
+                className={`loginBtn ${
+                  this.state.changeButton ? "btn-change" : "btn-secondary"
+                }`}
+                onSubmit={e => this.handleClick(e)}
+              >
+                Login
+              </Button>
+            </FormGroup>
+            {this.state.message && (
+              <div className="info info-danger">{this.state.message}</div>
+            )}
+          </Form>
+        </Card>
+      </Container>
+*/
 
 export default Signup;
