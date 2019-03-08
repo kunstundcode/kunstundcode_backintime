@@ -60,7 +60,7 @@ class Secret extends Component {
     return (
       <Container>
         <Form>
-          <h2>Admin</h2>
+          <h2 className="adminh2">Admin</h2>
           <div className="result">{this.state.secret}</div>
           <FormGroup>
             <Label for="projectcode">Projectcode: </Label>
@@ -95,7 +95,17 @@ class Secret extends Component {
               react environment
             </FormText>
           </FormGroup>
-          <Button onClick={e => this.handleClick(e)}>Create Codekunst</Button>
+          <Button
+            onClick={e => this.handleClick(e)}
+            className={`loginBtn ${
+              this.state.changeButton ? "btn-change" : "btn-secondary"
+            }`}
+          >
+            Create Codekunst
+          </Button>
+          {this.state.message && (
+            <div className="info info-danger">{this.state.message}</div>
+          )}
         </Form>
       </Container>
       // <div className="Admin">

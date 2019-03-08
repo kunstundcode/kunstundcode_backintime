@@ -17,11 +17,11 @@ const CardProfile = props => {
           src={props.c.pictureUrl}
           waves
         />
-        <Link to={"/codekuenste/" + props.c._codekunst._id}>
-          <Button style={{ backgroundColor: "transparent" }}>
+        <Button className="profileBtn">
+          <Link to={"/codekuenste/" + props.c._codekunst._id}>
             {props.c._codekunst.projectcode}
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </Card>
     </Col>
   );

@@ -22,11 +22,10 @@ export default class Profile extends Component {
 
     return (
       <Container className="profileContainer">
+        <div className="profileheader">
+          <h1>{username}, visit your Art Gallery.. </h1>
+        </div>
         <Row className="row">
-          <div>
-            <h1>This is your awesome art, {username} </h1>
-          </div>
-
           {this.state.userarts.map((item, i) => {
             let random = Math.floor(Math.random() * 200);
             return <CardProfile key={i} rndm={random} c={item} />;

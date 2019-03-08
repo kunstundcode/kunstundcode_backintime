@@ -38,6 +38,11 @@ class Codekunst extends Component {
       <div className="wrapper">
         <SidebarContainer />
         <Container className="container">
+          <Container className="container homeheader">
+            <h2 className="homeh2">kunstundcode</h2>
+            <p className="p1">Generative Design / Experimental Design</p>
+            <p className="p2">Create your own piece of art with code.</p>
+          </Container>
           <Row className="row">
             {this.state.codekuenste.map(c => (
               <CardProject key={c._id} c={c} />

@@ -2,6 +2,20 @@ import React, { Component } from "react";
 import api from "../../api";
 // import SpinnerPage from "../SpinnerPage";
 import CardDetail from "../CardDetail";
+import ModalPage from "../ModalPage.jsx";
+import SidebarContainer from "../SidebarContainer";
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+  Card,
+  Row,
+  Col
+} from "reactstrap";
 
 export default class CodekunstDetail extends Component {
   constructor(props) {
@@ -60,26 +74,39 @@ export default class CodekunstDetail extends Component {
       );
     }
     return (
-      <div>
-        <div>
-          <h3>
-            {/* TODO:Spinner und if else isloggedIn */}
-            <strong>Projectcode</strong>: {this.state.codekunst.projectcode}
-          </h3>
-          <div className="d-flex flex-row flex-wrap">
-            {this.state.codekunst.userarts.map((item, i) => (
-              <div key={i}>
-                <CardDetail c={item} />
-              </div>
-            ))}
+      <div className="wrapper">
+        <SidebarContainer />
+        <Container className="container">
+          <Container className="container homeheader">
+            {api.isLoggedIn() && !this.state.saving && (
+              <h3>
+                <strong>Projectcode</strong>: {this.state.codekunst.projectcode}
+              </h3>
+            )}
+            {!api.isLoggedIn() && (
+              <h2>
+                Please login first. Otherwise you will not be able to save your
+                art.
+              </h2>
+            )}
+            {api.isLoggedIn() && this.state.saving && (
+              <h2>Well done! Saving your art...</h2>
+            )}
+          </Container>
+          <div>
+            <div className="canvascontainer">
+              <div id="box" style={{ border: "0px solid white" }} />
+              <ModalPage codekunst={this.state.codekunst} />
+            </div>
+            <div className="d-flex flex-row flex-wrap">
+              {this.state.codekunst.userarts.map((item, i) => (
+                <div key={i}>
+                  <CardDetail c={item} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="right">
-          <h3>
-            How to use this... <i class="fas fa-question" />
-          </h3>
-          <div id="box" style={{ border: "0px solid white" }} />
-        </div>
+        </Container>
       </div>
     );
   }

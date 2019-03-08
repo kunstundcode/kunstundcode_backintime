@@ -230,6 +230,15 @@ $brandColor: greenyellow;
   color: $navitemsColor;
 }
 
+//====================================== HOME ===================================
+.homeheader {
+  padding-top: 5em;
+  padding-bottom: 4em;
+  text-align: center;
+}
+.homeh2 {
+  padding-bottom: 1em;
+}
 //====================================== GRID ===================================
 .wrapper {
   padding: 0;
@@ -307,6 +316,7 @@ background: linear-gradient(transparent 60%, 50%, black),
 .card-body {
   padding: 0;
   margin-top: 2rem;
+  align-self: center;
 }
 
 .card-img-top {
@@ -315,9 +325,18 @@ background: linear-gradient(transparent 60%, 50%, black),
   // object-fit: cover;
 }
 
-.linkContainer > a {
+a {
   text-decoration: unset;
-  color: $cardPrime;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+.linkContainer {
+  padding: 0;
+  margin: 0;
+  align-self: center;
 }
 
 .xBox {
@@ -396,7 +415,7 @@ $secondary-color: #ff00ed;
 .projectSidebar {
   width: 100vw;
   height: 100vh;
-  background-color: #ffe600;
+  background-color: $dropdownitemBg;
   position: fixed;
   top: 0;
   right: 0;
@@ -426,30 +445,41 @@ $secondary-color: #ff00ed;
 }
 
 // #0004ff blau
+//#0049ff blauuu
 // #fff200 gelb
 // #ff00ed pink
 
 // ============================= PROFILE CONTAINER===========================
 
 .profileContainer {
-  border: 1px solid red;
-  background-color: blue;
+  // background-color: #0049ff;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.profileContainer:hover {
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6); ALTERNATIVE
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+  // box-shadow: 20px 20px black;
+  // z-index: 99;
 }
 
 .cardProfile {
-  border: 0.6em solid white;
-  background-clip: content-box;
+  border: 0.5em solid $cardPrime;
   background-color: transparent;
-  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
   transition: box-shadow 500ms;
   border-radius: 0%;
+  border-style: outset; //ALTERNATIVE
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
   padding: 5rem 3rem 2rem 3rem;
   margin: 2rem 0 4rem 0;
 }
 
 .cardProfile:hover {
   // box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
-  box-shadow: 20px 20px black;
+  box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
   // z-index: 99;
 }
 
@@ -470,11 +500,6 @@ $secondary-color: #ff00ed;
   // object-fit: cover;
 }
 
-.linkContainer > a {
-  text-decoration: unset;
-  color: $cardPrime;
-}
-
 .xBox {
   font-size: 2.8rem;
   color: $cardPrime;
@@ -488,6 +513,22 @@ $secondary-color: #ff00ed;
 .card-header {
   border: none;
   background-color: transparent;
+}
+
+.profileheader {
+  align-self: center;
+  text-align: center;
+  color: black;
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+.profileBtn {
+  background-color: transparent !important;
+  border: 1px solid black !important;
+  color: black !important;
+  transition: 300ms;
+  margin-top: 1em;
 }
 
 //====================================== ADMIN PAGE ===================================
@@ -504,6 +545,9 @@ $primaryAdminFont: white;
   color: $primaryAdminFont;
   border: 1px solid white !important;
   box-shadow: 0px 20px 50px 0 rgba(0, 0, 0, 0.6);
+}
+.adminh2 {
+  margin-top: 2em;
 }
 
 //====================================== LOGIN PAGE ===================================
@@ -528,6 +572,10 @@ label {
   // display: flex;
   // flex-direction: column;
   // justify-content: flex-end;
+}
+//info-note password wrong
+.info {
+  text-align: center;
 }
 .form-control {
   background-color: transparent;
@@ -582,4 +630,44 @@ label {
   background-color: black !important;
   border: 1px solid white !important;
   color: white !important;
+}
+//====================================== CODEKUENSTE PAGE ===================================
+
+.OkBtn {
+  background-color: black !important;
+  border: 1px solid white !important;
+  color: white !important;
+  transition: 300ms;
+}
+.OkBtn:hover {
+  box-shadow: none;
+}
+
+.howToUseBtn {
+  background-color: transparent !important;
+  border: 1px solid black !important;
+  color: black !important;
+  transition: 300ms;
+}
+.howToUseBtn:hover {
+  background-color: black !important;
+  border: 1px solid white !important;
+  color: white !important;
+  transition: 300ms;
+}
+
+.modalBtn {
+  // position: absolute;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1em;
+}
+.canvascontainer {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  flex-wrap: wrap-reverse;
 }

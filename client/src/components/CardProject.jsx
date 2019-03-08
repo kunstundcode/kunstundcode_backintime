@@ -13,9 +13,12 @@ const CardProject = props => {
           alt="codekunstpicture"
         />
         <CardBody class="card-body">
-          <CardText className="text-nowrap linkContainer">
-            <Link to={"/codekuenste/" + props.c._id}>▬▬▬▬▬▬ Detail ▬▬▬▬▬⪢</Link>
-          </CardText>
+          <Link
+            className="text-nowrap linkContainer"
+            to={"/codekuenste/" + props.c._id}
+          >
+            ▬▬▬▬▬▬ Detail ▬▬▬▬▬⪢
+          </Link>
         </CardBody>
       </Card>
     </Col>
